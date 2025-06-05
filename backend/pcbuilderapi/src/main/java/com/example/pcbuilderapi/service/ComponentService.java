@@ -33,7 +33,7 @@ public class ComponentService {
         }
     }
 
-    public PCComponent creatcoComponent(ComponentRequestDTO componentDTO){
+    public PCComponent createComponent(ComponentRequestDTO componentDTO){
         PCComponent newComponent = new PCComponent(
             componentDTO.getName(),
             componentDTO.getType(),
