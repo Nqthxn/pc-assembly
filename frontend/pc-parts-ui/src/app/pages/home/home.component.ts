@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  imagePath = './images/test3.jpg';
+  backgroundImagePath = 'assets/images/home-bg.jpg';
 }
