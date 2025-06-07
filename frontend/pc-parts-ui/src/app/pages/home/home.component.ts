@@ -10,5 +10,5 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   backgroundImagePath = 'assets/images/home-bg.jpg';
-  iconImagePath = 'assets/icons/tools.png';
+  iconImagePath = 'assets/icons/tool.png';
 }
