@@ -1,39 +1,38 @@
 <nav 
-  class="w-full flex items-center justify-between px-8 sm:px-14 py-7 fixed top-0 left-0 z-50"
+  class="w-full flex items-center justify-between bg-transparent px-8 sm:px-14 py-5 fixed top-0 left-0 z-50 h-24"
   style="right:0;">
   
   <div>
     <a 
       routerLink="/" 
-      class="text-2xl sm:text-3xl font-semibold text-white uppercase tracking-widest hover:text-gray-300 transition-colors duration-300"
+      class="text-2xl sm:text-3xl font-semibold text-white uppercase tracking-widest hover:text-blue-200 transition-colors duration-300"
       >PC Configure</a>
   </div>
 
   <div class="flex items-center gap-14 sm:gap-16">
     <a 
       routerLink="/products" 
-      routerLinkActive="text-blue-400"
-      class="text-base sm:text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 uppercase tracking-wider"
+      routerLinkActive="text-blue-200"
+      class="text-base sm:text-lg font-medium text-white hover:text-blue-200 transition-colors duration-300 uppercase tracking-wider"
       >Products</a>
     
     <a 
       routerLink="/builds" 
-      routerLinkActive="text-blue-400"
-      class="text-base sm:text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 uppercase tracking-wider"
+      routerLinkActive="text-blue-200"
+      class="text-base sm:text-lg font-medium text-white hover:text-blue-200 transition-colors duration-300 uppercase tracking-wider"
       >My Builds</a>
     <div class="flex items-center gap-6">
       <a 
-      routerLink="/register" 
-      class="hidden md:inline-block bg-white text-black rounded-lg font-semibold py-2 px-5 hover:bg-blue-400 transition-colors duration-300 text-base"
-      >Sign Up</a>
+        routerLink="/register" 
+        class="hidden md:inline-block bg-transparent text-white border border-white rounded-lg font-semibold py-2 px-5 hover:bg-white hover:text-blue-800 transition-colors duration-300 text-base"
+        >Sign Up</a>
       <a 
         routerLink="/login" 
-        class="hidden md:inline-block bg-white text-black rounded-lg font-semibold py-2 px-5 hover:bg-blue-400 transition-colors duration-300 text-base"
+        class="hidden md:inline-block bg-transparent text-white border border-white rounded-lg font-semibold py-2 px-5 hover:bg-white hover:text-blue-800 transition-colors duration-300 text-base"
         >Login</a>
     </div>
-    
   </div>
 </nav>
-<div class="pt-24"> 
+<div class="pt-24 h-screen">
   <router-outlet />
 </div>
