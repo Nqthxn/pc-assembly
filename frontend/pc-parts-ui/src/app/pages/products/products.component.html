@@ -1,1 +1,6 @@
-<p>products works!</p>
+<div class="p-8 text-white">
+  <h1 class="text-3xl font-bold">Browse Parts Page</h1>
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+  <pre *ngIf="!isLoading" class="text-black">{{ components | json }}</pre>
+</div>
