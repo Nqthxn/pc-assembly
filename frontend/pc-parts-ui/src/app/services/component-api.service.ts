@@ -8,6 +8,7 @@ export interface PCComponent {
   type: string;
   brand: string;
   price: number;
+  imageUrl: string;
 }
 
 export interface ComponentRequestData { 
