@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { ComponentApiService, PCComponent } from '../../services/component-api.service';
+import { CurrentBuildService } from '../../services/current-build.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ export class ProductsComponent {
   public isLoading: boolean = true;
   public errorMessage: string = '';
 
-  constructor(private componentApi: ComponentApiService){}
+  constructor(private componentApi: ComponentApiService, private currentBuildService: CurrentBuildService){}
 
   ngOnInit(): void{
     this.loadComponents();
@@ -40,5 +41,10 @@ export class ProductsComponent {
       }
     });
   }
+
+  addToBuild(component: PCComponent): void{
+    this.currentBuildService.addComponent(component);
+  }
+
 
 }

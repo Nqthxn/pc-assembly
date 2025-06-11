@@ -13,11 +13,8 @@
       {{ errorMessage }}
     </div>
 
-    <!-- Data Display Grid -->
     <div *ngIf="!isLoading && !errorMessage" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-      <!-- We use *ngFor to loop over the 'components' array -->
-      <!-- For each 'comp' in the array, it will create one of these cards -->
       <div *ngFor="let comp of components" 
            class="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
 
@@ -36,7 +33,9 @@
 
           <div class="mt-4 flex justify-between items-center">
             <p class="text-xl font-semibold text-blue-400">${{ comp.price }}</p>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors">
+            <button
+              (click)="addToBuild(comp)"
+             class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors">
               Add to Build
             </button>
           </div>
