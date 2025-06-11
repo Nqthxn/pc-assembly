@@ -1,13 +1,14 @@
 package com.example.pcbuilderapi.service;
 
-import com.example.pcbuilderapi.dto.ComponentRequestDTO;
-import com.example.pcbuilderapi.model.PCComponent;
-import com.example.pcbuilderapi.repository.PCComponentRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.pcbuilderapi.dto.ComponentRequestDTO;
+import com.example.pcbuilderapi.model.PCComponent;
+import com.example.pcbuilderapi.repository.PCComponentRepository;
 
 @Service
 public class ComponentService {
@@ -38,7 +39,8 @@ public class ComponentService {
             componentDTO.getName(),
             componentDTO.getType(),
             componentDTO.getBrand(),
-            componentDTO.getPrice()
+            componentDTO.getPrice(),
+            componentDTO.getImageUrl()
         );
 
         return pcComponentRepository.save(newComponent);
@@ -63,6 +65,7 @@ public class ComponentService {
             existingComponent.setType(componentRequestDTO.getType());
             existingComponent.setBrand(componentRequestDTO.getBrand());
             existingComponent.setPrice(componentRequestDTO.getPrice());
+            existingComponent.setImageUrl(componentRequestDTO.getImageUrl());
 
             return Optional.of(pcComponentRepository.save(existingComponent));
         }else{
@@ -76,5 +79,10 @@ public class ComponentService {
             return true;
         }
         return false;
+    }
+
+    public void deleteAllComponents() {
+        pcComponentRepository.deleteAll(); // This method is provided by JpaRepository
+        System.out.println("All PC components have been deleted.");
     }
 }

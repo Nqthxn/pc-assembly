@@ -5,16 +5,17 @@ public class ComponentRequestDTO {
     private String type;
     private String brand;
     private double price;
+    private String imageUrl;
 
     public ComponentRequestDTO(){}
     
-    public ComponentRequestDTO(String name, String type, String brand, double price){
+    public ComponentRequestDTO(String name, String type, String brand, double price, String imageUrl){
         this.name = name;
         this.type = type;
         this.brand = brand;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
-        // Getters
     public String getName() {
         return name;
     }
@@ -31,7 +32,6 @@ public class ComponentRequestDTO {
         return price;
     }
 
-    // Setters
     public void setName(String name) {
         this.name = name;
     }
@@ -46,5 +46,13 @@ public class ComponentRequestDTO {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -1,1 +1,46 @@
-<p>products works!</p>
+<!-- src/app/pages/browse-components/browse-components.component.html -->
+<div class="bg-gray-900 text-white min-h-screen p-4 sm:p-6 lg:p-8">
+  <div class="container mx-auto">
+    <h1 class="text-4xl font-extrabold tracking-tight mb-8">Browse All Components</h1>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="text-center py-10">
+      <p class="text-xl text-blue-400">Loading components...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="errorMessage" class="p-4 my-4 text-lg text-red-300 bg-red-900/50 border border-red-700 rounded-lg">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!isLoading && !errorMessage" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      <div *ngFor="let comp of components" 
+           class="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
+
+        <img [src]="comp.imageUrl" 
+       [alt]="comp.name"
+       class="h-48 w-full object-cover"
+       (error)="comp.imageUrl='https://placehold.co/400x400/1e293b/ffffff?text=Image+Not+Found'">
+
+        <!-- Card Content -->
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="text-lg font-bold truncate">{{ comp.name }}</h3>
+          <p class="text-sm text-gray-400">{{ comp.brand }} - {{ comp.type }}</p>
+
+          <!-- Spacer to push price and button to the bottom -->
+          <div class="flex-grow"></div>
+
+          <div class="mt-4 flex justify-between items-center">
+            <p class="text-xl font-semibold text-blue-400">${{ comp.price }}</p>
+            <button
+              (click)="addToBuild(comp)"
+             class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors">
+              Add to Build
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

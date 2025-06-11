@@ -1,5 +1,6 @@
 package com.example.pcbuilderapi.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,14 +16,18 @@ public class PCComponent {
     private String brand;
     private double price;
 
+    @Column(length = 1024)
+    private String imageUrl;
+
     public PCComponent(){}
 
 
-    public PCComponent(String name, String type, String brand, double price){
+    public PCComponent(String name, String type, String brand, double price, String imageUrl){
         this.name = name;
         this.type = type;
         this.brand = brand;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
 
     public long getId(){
@@ -56,6 +61,14 @@ public class PCComponent {
 
     public void setPrice(double price){
         this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }
