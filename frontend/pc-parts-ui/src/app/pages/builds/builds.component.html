@@ -1,1 +1,46 @@
-<p>builds works!</p>
+<div class="relative w-full h-full overflow-hidden">
+  <!-- Background covers the whole viewport, including behind the navbar -->
+  <div class="fixed inset-0 w-full h-full bg-gray-900 -z-10"></div>
+  <div class="container mx-auto pt-24 p-4 sm:p-6 lg:p-8 text-white">
+    <h1 class="text-4xl font-extrabold tracking-tight mb-8">My Current PC Build</h1>
+
+    <!-- Empty State: Show this if the build is empty -->
+    <div *ngIf="currentBuild.length === 0" class="text-center py-10 bg-gray-800 rounded-lg">
+      <p class="text-xl text-gray-400">Your build is empty.</p>
+      <p class="mt-2 text-gray-500">Go to the "Browse Parts" page to add components.</p>
+    </div>
+
+    <!-- Build Table: Show this if there are items in the build -->
+    <div *ngIf="currentBuild.length > 0" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <table class="w-full text-left">
+        <thead class="bg-gray-700 text-xs text-gray-300 uppercase">
+          <tr>
+            <th class="p-4">Type</th>
+            <th class="p-4">Product</th>
+            <th class="p-4 text-right">Price</th>
+            <th class="p-4 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comp of currentBuild" class="border-b border-gray-700">
+            <td class="p-4 font-semibold">{{ comp.type }}</td>
+            <td class="p-4">{{ comp.name }}</td>
+            <td class="p-4 text-right font-mono">${{ comp.price.toFixed(2) }}</td>
+            <td class="p-4 text-center">
+              <button (click)="removeFromBuild(comp)" class="text-red-400 hover:text-red-600 font-semibold">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="font-bold">
+          <tr class="text-lg">
+            <td class="p-4" colspan="2">Total Price</td>
+            <td class="p-4 text-right font-mono text-blue-400">${{ totalPrice.toFixed(2) }}</td>
+            <td class="p-4"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

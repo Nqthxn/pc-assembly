@@ -7,7 +7,7 @@ import { PCComponent } from './component-api.service';
 })
 export class CurrentBuildService {
   private buildSource = new BehaviorSubject<PCComponent[]>([]);
-  private currentBuild$ = this.buildSource.asObservable();
+  public currentBuild$ = this.buildSource.asObservable();
 
   constructor() { }
 
