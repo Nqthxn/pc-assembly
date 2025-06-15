@@ -34,4 +34,9 @@ public class BuildService {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found with username " + username));
         return userBuildRepository.findByUserId(user.getId());
     }
+
+    public void deleteAllBuilds() {
+        userBuildRepository.deleteAll();
+        System.out.println("All user builds have been deleted.");
+    }
 }
