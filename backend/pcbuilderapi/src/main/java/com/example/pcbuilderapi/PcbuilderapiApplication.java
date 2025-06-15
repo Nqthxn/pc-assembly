@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.pcbuilderapi.model.PCComponent;
 import com.example.pcbuilderapi.repository.UserRepository;
+import com.example.pcbuilderapi.service.BuildService;
 import com.example.pcbuilderapi.service.ComponentService;
 
 @SpringBootApplication
@@ -17,9 +18,10 @@ public class PcbuilderapiApplication {
     }
 
     @Bean
-    CommandLineRunner initDatabase(ComponentService componentService, UserRepository userRepository) {
+    CommandLineRunner initDatabase(BuildService buildService, ComponentService componentService, UserRepository userRepository) {
         return args -> {
             // Clear existing data to avoid duplicates on restart during development
+            buildService.deleteAllBuilds();
             userRepository.deleteAll();
             componentService.deleteAllComponents(); // You'll need to add this method to your service/repo
 
