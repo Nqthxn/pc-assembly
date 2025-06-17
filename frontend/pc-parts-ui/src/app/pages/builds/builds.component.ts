@@ -5,11 +5,12 @@ import { CurrentBuildService } from '../../services/current-build.service';
 import { CommonModule } from '@angular/common';
 import { BuildApiService, BuildRequest } from '../../services/build-api.service';
 import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-builds',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './builds.component.html',
   styleUrl: './builds.component.css'
 })
@@ -24,7 +25,7 @@ export class BuildsComponent implements OnInit, OnDestroy{
   constructor(
     private currentBuildService: CurrentBuildService,
     private buildApiService: BuildApiService,
-    private authService: AuthService
+    public authService: AuthService
   ){}
   
   saveBuild(): void{
