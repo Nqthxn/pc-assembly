@@ -1,19 +1,27 @@
 package com.example.pcbuilderapi.controller;
 
-import com.example.pcbuilderapi.dto.ComponentRequestDTO;
-import com.example.pcbuilderapi.model.PCComponent;
-import com.example.pcbuilderapi.service.ComponentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*; // Ensure this imports CrossOrigin
-
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping; // Ensure this imports CrossOrigin
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.pcbuilderapi.dto.ComponentRequestDTO;
+import com.example.pcbuilderapi.model.PCComponent;
+import com.example.pcbuilderapi.service.ComponentService;
+
 @RestController
 @RequestMapping("/api/components") 
-@CrossOrigin(origins = "http://localhost:4200") 
 public class ComponentController {
 
     private final ComponentService componentService;

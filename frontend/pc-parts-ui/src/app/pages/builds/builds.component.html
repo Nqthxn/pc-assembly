@@ -1,16 +1,13 @@
 <div class="relative w-full h-full overflow-hidden">
-  <!-- Background covers the whole viewport, including behind the navbar -->
   <div class="fixed inset-0 w-full h-full bg-gray-900 -z-10"></div>
   <div class="container mx-auto pt-24 p-4 sm:p-6 lg:p-8 text-white">
     <h1 class="text-4xl font-extrabold tracking-tight mb-8">My Current PC Build</h1>
 
-    <!-- Empty State: Show this if the build is empty -->
     <div *ngIf="currentBuild.length === 0" class="text-center py-10 bg-gray-800 rounded-lg">
       <p class="text-xl text-gray-400">Your build is empty.</p>
       <p class="mt-2 text-gray-500">Go to the "Products" page to add components.</p>
     </div>
 
-    <!-- Build Table: Show this if there are items in the build -->
     <div *ngIf="currentBuild.length > 0" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
       <table class="w-full text-left">
         <thead class="bg-gray-700 text-xs text-gray-300 uppercase">
@@ -27,7 +24,7 @@
             <td class="p-4">{{ comp.name }}</td>
             <td class="p-4 text-right font-mono">${{ comp.price.toFixed(2) }}</td>
             <td class="p-4 text-center">
-              <button (click)="removeFromBuild(comp)" class="text-red-400 hover:text-red-600 font-semibold">
+              <button (click)="removeFromBuild(comp)" class="text-white cursor-pointer bg-red-600 px-4 py-2 rounded-lg hover:text-white font-semibold">
                 Remove
               </button>
             </td>
@@ -41,6 +38,37 @@
           </tr>
         </tfoot>
       </table>
+    </div>
+
+    <div *ngIf="currentBuild.length > 0 && authService.isLoggedIn()" 
+         class="mt-8 p-6 bg-gray-800 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">Save Your Build</h3>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <!-- Input for the build name -->
+        <input type="text" 
+               [(ngModel)]="buildName" 
+               placeholder="Enter a name for your build..."
+               class="flex-grow p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition">
+
+        <!-- Save button -->
+        <button (click)="saveBuild()"
+                class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+          Save Build
+        </button>
+      </div>
+
+      <!-- Status message for success or error -->
+      <p *ngIf="saveStatusMessage" class="mt-4 text-sm">{{ saveStatusMessage }}</p>
+    </div>
+
+    <!-- Message for logged-out users -->
+    <div *ngIf="currentBuild.length > 0 && !authService.isLoggedIn()" 
+         class="mt-8 p-6 bg-gray-800 rounded-lg text-center">
+      <p class="text-gray-400">
+        <a routerLink="/login" class="text-blue-400 font-semibold hover:underline">Log in</a> or 
+        <a routerLink="/register" class="text-blue-400 font-semibold hover:underline">create an account</a> to save your build.
+      </p>
     </div>
   </div>
 </div>
