@@ -1,1 +1,26 @@
-<p>my-builds works!</p>
+<div class="relative w-full h-full overflow-hidden">
+  <div class="fixed inset-0 w-full h-full bg-gray-900 -z-10"></div>
+  <div class="container mx-auto pt-24 p-4 sm:p-6 lg:p-8 text-white">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-8">My Saved Builds</h1>
+
+        <div *ngIf="isLoading" class="text-center py-10">
+        <p class="text-xl text-blue-400">Loading your builds...</p>
+        </div>
+
+        <div *ngIf="errorMessage" class="p-4 my-4 text-lg text-red-300 bg-red-900/50 rounded-lg">
+        {{ errorMessage }}
+        </div>
+
+        <div *ngIf="!isLoading && userBuilds.length === 0" class="text-center py-10 bg-gray-800 rounded-lg">
+            <p class="text-xl text-gray-400">You haven't saved any builds yet.</p>
+        </div>
+
+        <div *ngIf="!isLoading && userBuilds.length > 0" class="space-y-4">
+        <div *ngFor="let build of userBuilds" class="bg-gray-800 p-4 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-blue-400">{{ build.buildName }}</h2>
+            <p class="text-sm text-gray-500">Build ID: {{ build.id }}</p>
+            <p class="mt-2 text-gray-300">Component IDs: {{ build.componentIds.join(', ') }}</p>
+        </div>
+        </div>
+    </div>
+</div>
